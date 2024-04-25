@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="notGuncelleToolbarBaslik"
+            type="String" />
+        <variable
+            name="notGuncelleFragment"
+            type="com.example.notdefterimapp.ui.fragment.NotGuncelleFragment" />
+        <variable
+            name="notNesnesi"
+            type="com.example.notdefterimapp.data.entiti.Notlar" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/AnasayfaColor"
+        tools:context=".ui.fragment.NotEkleFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarNotGuncelle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/statusBarColor"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@{notGuncelleToolbarBaslik}"
+            app:titleTextColor="#FBFBFB" />
+
+        <!-- CardView içinde EditText'ler -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="383dp"
+            android:layout_height="188dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewGuncelle">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Başlık EditText'i -->
+                <EditText
+                    android:id="@+id/edittextBaslik"
+                    android:layout_width="346dp"
+                    android:layout_height="42dp"
+                    android:text="@{notNesnesi.notBaslik}"
+                    android:background="@drawable/edittext_background"
+                    android:hint="  Başlık" />
+
+                <!-- Açıklama EditText'i (Daha büyük) -->
+                <EditText
+                    android:id="@+id/edittextAciklama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{notNesnesi.notAciklama}"
+                    android:background="@drawable/edittext_background"
+                    android:hint="  Not Ekle"
+                    android:minLines="4" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/buttonNotGuncelle"
+            android:layout_width="376dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/btn_background"
+            android:fontFamily="sans-serif"
+            android:text="GÜNCELLE"
+            android:onClick="@{() -> notGuncelleFragment.buttonNotGuncelle(notNesnesi.notId,edittextBaslik.getText().toString,edittextAciklama.getText().toString)}"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        <ImageView
+            android:id="@+id/imageViewGuncelle"
+            android:layout_width="282dp"
+            android:layout_height="291dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/calendar"
+            app:layout_constraintBottom_toTopOf="@+id/cardView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarNotGuncelle"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/calendar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

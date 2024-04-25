@@ -1,0 +1,22 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+    }
+    dependencies {
+        def nav_version = "2.5.2" // Kullanmak istediğiniz Navigation Component sürümü
+
+        // Navigation Safe Args Gradle eklentisi
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+        classpath ("com.google.dagger:hilt-android-gradle-plugin:2.44")
+
+    }
+}
+
+
+
+plugins {
+    id 'com.android.application' version '8.0.2' apply false
+    id 'com.android.library' version '8.0.2' apply false
+    id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
+}

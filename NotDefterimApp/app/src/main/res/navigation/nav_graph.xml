@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/anasayfaFragment">
+
+
+    <fragment
+        android:id="@+id/anasayfaFragment"
+        android:name="com.example.notdefterimapp.ui.fragment.AnasayfaFragment"
+        android:label="fragment_anasayfa"
+        tools:layout="@layout/fragment_anasayfa" >
+        <action
+            android:id="@+id/a_to_guncelle"
+            app:destination="@id/notGuncelleFragment" />
+        <action
+            android:id="@+id/a_to_ekle"
+            app:destination="@id/notEkleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notEkleFragment"
+        android:name="com.example.notdefterimapp.ui.fragment.NotEkleFragment"
+        android:label="fragment_not_guncelle"
+        tools:layout="@layout/fragment_not_guncelle" />
+    <fragment
+        android:id="@+id/notGuncelleFragment"
+        android:name="com.example.notdefterimapp.ui.fragment.NotGuncelleFragment"
+        android:label="NotGuncelleFragment" >
+        <argument
+            android:name="notlar"
+            app:argType="com.example.notdefterimapp.data.entiti.Notlar" />
+    </fragment>
+</navigation>
